@@ -1,7 +1,7 @@
 
 angular.module('dailyHabits').controller('statsCtrl', function ($scope, localStorageService) {
-    $scope.stats = {};
-    $scope.stats.period = 0;
+    $scope.stats = {period: 0};
+    $scope.habits = [];
     $scope.graphData = [];
     $scope.graphOptions = {
         chart: {

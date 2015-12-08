@@ -10,7 +10,6 @@ dailyHabits.controller('mainCtrl', function ($scope, $mdUtil, $mdDialog, $q, loc
     $scope.dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     $scope.monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     $scope.events = [];
-    $scope.habits = [];
     $scope.calendarId = null;
     $scope.selectedHabit = null;
 
