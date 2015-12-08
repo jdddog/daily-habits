@@ -11,65 +11,20 @@
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/node-uuid/uuid.js"></script>
     <script src="bower_components/uoacalendar-js/dist/uoacalendar.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/nvd3/build/nv.d3.js"></script>
-    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
-
     <script src="js/main-controller.js"></script>
-    <script src="js/habit-controller.js"></script>
-    <script src="js/stats-controller.js"></script>
 </head>
 <body ng-controller="mainCtrl">
-    <md-toolbar class="md-tall" layout="column">
+<div>
+    <md-list ng-cloak>
+        <md-subheader class="md-no-sticky">My habits</md-subheader>
 
-        <div flex layout="row" layout-align="center center">
-            <md-button class="md-icon-button">
-                <md-icon md-svg-icon="img/icons/ic_menu_48px.svg"></md-icon>
-            </md-button>
-
-            <div flex layout-align="center" class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="Previous week" ng-click="previousDay()" >
-                    <md-icon md-svg-icon="img/icons/ic_chevron_left_48px.svg"></md-icon>
-                </md-button>
-
-                <h2 class="toolbarDate">{{currentDateStr}}</h2>
-
-                <md-button class="md-icon-button" aria-label="Next week" ng-click="nextDay()">
-                    <md-icon md-svg-icon="img/icons/ic_chevron_right_48px.svg"></md-icon>
-                </md-button>
-            </div>
-
-            <md-button class="md-icon-button" aria-label="Goto today" ng-click="today()" ng-disabled="isDayEditable()">
-                <md-icon md-svg-icon="img/icons/ic_edit_48px.svg"></md-icon>
-            </md-button>
-
-            <md-button class="md-icon-button" aria-label="Statistics" ng-click="openStatsDialog($event)">
-                <md-icon md-svg-icon="img/icons/ic_insert_chart_black_48px.svg"></md-icon>
-            </md-button>
-        </div>
-
-        <div flex>
-            <h2>Daily Habits</h2>
-        </div>
-    </md-toolbar>
-
-    <md-button class="md-fab fabBtn" aria-label="Add habit" ng-click="openNewHabitDialog($event)">
-        <md-icon md-svg-src="img/icons/ic_add_48px.svg"></md-icon>
-    </md-button>
-
-    <div class="eventList">
-        <md-list ng-cloak>
-            <md-subheader class="md-no-sticky">My habits</md-subheader>
-
-            <md-list-item ng-repeat="event in events">
-                <md-checkbox ng-model="event.todo" ng-change="onEventChanged(event)" ng-disabled="!isDayEditable()"></md-checkbox>
-                <p> {{ event.title }} </p>
-               <md-icon class="md-secondary" ng-click="openEditHabitDialog($event, event)" aria-label="Chat" md-svg-icon="img/icons/ic_edit_48px.svg" ng-disabled="!isDayEditable()"></md-icon>
-            </md-list-item>
-        </md-list>
-    </div>
+        <md-list-item ng-repeat="event in events">
+            <md-checkbox></md-checkbox>
+            <p> {{ event.title }} </p>
+            <md-icon class="md-secondary" ng-click="" aria-label="Chat" md-svg-icon="img/icons/ic_edit_48px.svg"></md-icon>
+        </md-list-item>
+    </md-list>
+</div>
 </body>
 </html>
