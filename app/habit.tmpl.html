@@ -1,12 +1,13 @@
-<md-dialog aria-label="New habit" ng-cloak >
+<md-dialog aria-label="New habit" ng-cloak>
     <form ng-submit="saveHabit()">
-        <md-dialog-content style="padding: 30px;">
-            <h2 class="question">Habit details</h2>
+        <md-dialog-content class="dialogContent">
+            <h3 class="question">Habit details</h3>
 
-            <div layout="column" style="padding-left: 12px;">
-                <md-input-container flex="100" style="margin-bottom: 0;">
+            <div layout="column" class="dialogInput">
+                <md-input-container flex="100" class="inputContainer">
                     <label>Habit Name</label>
                     <input name="name" ng-model="selectedHabit.name" required>
+
                     <div ng-messages="selectedHabit.name.$error">
                         <div ng-message="required">This is required.</div>
                     </div>
@@ -14,96 +15,21 @@
 
                 <md-input-container flex="100">
                     <label>Habit Description</label>
-                    <textarea name="description" ng-model="selectedHabit.description" columns="1" md-maxlength="300" rows="3"></textarea>
+                    <textarea name="description" ng-model="selectedHabit.description" columns="1" md-maxlength="300"
+                              rows="3"></textarea>
                 </md-input-container>
             </div>
 
-            <h2 class="question">How would you like to track your habit?</h2>
-                <md-radio-group name="type" ng-model="selectedHabit.type" ng-click="onTrackTypeChange();" ng-required="true">
-                    <md-radio-button value="boolean" class="md-primary">With a Yes or No each day - <span style="font-style: italic;">Did I get my gains today?</span></md-radio-button>
-                    <md-radio-button value="number">With a Number - <span style="font-style: italic;">How many packs did I smoke today?</span></md-radio-button>
-                </md-radio-group>
+            <h3 class="question">When is your target for making this a habit?</h3>
 
-            <h2 class="question" ng-show="displayNumberOpt">When is a day successful?</h2>
-            <div layout="row" layout-align="center center" ng-show="displayNumberOpt" style="margin-left: 15px;">
-                <p style="padding-right: 15px;">When I</p>
-                <md-input-container flex style="padding-right: 15px; margin-bottom: 0;">
-                    <label>e.g. gain</label>
-                    <input ng-model="selectedHabit.verb" ng-required="displayNumberOpt">
-                    <div ng-messages="selectedHabit.verb.$error">
-                        <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
-
-                <md-input-container flex style="margin-bottom: 0;">
-                    <label>e.g. at least</label>
-                    <md-select ng-model="selectedHabit.comparitor" ng-required="displayNumberOpt">
-                        <md-option ng-repeat="state in states" value="{{state.type}}">
-                            {{state.name}}
-                        </md-option>
-                    </md-select>
-                    <div ng-messages="selectedHabit.comparitor.$error">
-                        <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
-            </div>
-
-            <div layout="row" layout-align="center center" ng-show="displayNumberOpt" style="margin-left: 15px;">
-                <md-input-container flex style="padding-right: 15px;margin-bottom: 0;">
-                    <label>e.g. 1</label>
-                    <input type="number" step="any" min="0"
-                           max="1000" ng-model="selectedHabit.goalQty" ng-required="displayNumberOpt"/>
-                    <div ng-messages="selectedHabit.goalQty.$error">
-                        <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container flex style="padding-right: 15px;margin-bottom: 0;">
-                    <label>e.g. kgs</label>
-                    <input ng-model="selectedHabit.units" ng-required="displayNumberOpt">
-                    <div ng-messages="selectedHabit.units.$error">
-                        <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
-                <p>a day.</p>
-            </div>
-
-            <h2 class="question">On which days do you want to do this?</h2>
-            <md-radio-group ng-model="selectedHabit.when" ng-click="onTrackDaysChange()">
-                <md-radio-button value="every" class="md-primary">Every day</md-radio-button>
-                <md-radio-button value="some" class="md-primary">Only some days of the week</md-radio-button>
-                <div layout="row" layout-wrap flex style="padding-left: 50px;" ng-show="displayWeekDays" ng-required="displayWeekDays">
-                    <div flex="50" ng-repeat="item in weekdayNames | orderBy:'chkList'">
-                        <md-checkbox checklist-model="selectedHabit.weekdays" checklist-value="item.id">
-                            {{ item.name }}
-                        </md-checkbox>
-                    </div>
-                </div>
-                <md-radio-button value="period" class="md-primary">Number of days per period</md-radio-button>
-                <div layout="row" ng-show="displayDaysPerPeriod" style="padding-left: 50px; padding-right:50px;">
-                    <md-input-container flex >
-                        <label>e.g. 1</label>
-                        <input type="number" step="any" min="0"
-                               max="1000" ng-model="selectedHabit.daysPerPeriod" ng-required="displayDaysPerPeriod" />
-                    </md-input-container>
-                    <md-input-container flex style="padding-left: 30px;">
-                        <label>e.g. a week</label>
-                        <md-select ng-model="selectedHabit.comparitor" ng-required="displayDaysPerPeriod">
-                            <md-option ng-repeat="period in periods" value="{{period.type}}">
-                                {{period.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-            </md-radio-group>
-
-            <h2 class="question">When is your target for making this a habit?</h2>
-            <div layout="row"  layout-sm="column" layout-align="start center" style="padding-left: 12px;">
-                <md-input-container flex style="">
+            <div layout="row" layout-sm="column" layout-align="start center" class="dialogInput">
+                <md-input-container flex>
                     <label>Number of days</label>
                     <input required type="number" step="any" min="1"
                            max="1000" ng-model="selectedHabit.numDays" ng-change="updateDate()"/>
                 </md-input-container>
-                <md-datepicker ng-model="selectedHabit.endDate" md-placeholder="Enter date" ng-change="updateNumDays()" md-date-filter="validateDate" flex></md-datepicker>
+                <md-datepicker ng-model="selectedHabit.endDate" md-placeholder="Enter date" ng-change="updateNumDays()"
+                               md-date-filter="validateDate" flex></md-datepicker>
             </div>
         </md-dialog-content>
 
@@ -112,7 +38,7 @@
             <md-button ng-click="closeDialog()">
                 Cancel
             </md-button>
-            <md-button type="submit" style="margin-right:20px;">
+            <md-button type="submit" class="dialogDoneBtn">
                 Done
             </md-button>
         </md-dialog-actions>

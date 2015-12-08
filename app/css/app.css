@@ -5,3 +5,60 @@
     letter-spacing: .005em;
     color: rgb(98, 98, 98);
 }
+
+.toolbarDate
+{
+    width: 200px;
+    text-align: center;
+}
+
+h2
+{
+    width:200px;
+    font-size: 25px;
+    margin-left: 75px;
+    margin-top: 15px;
+    font-weight: 400;
+    letter-spacing: .005em;
+}
+
+.fabBtn
+{
+    position: relative;
+    margin-top: 0px;
+    padding-top: 0px;
+    transform: translate(10%, -50%);
+}
+
+.eventList
+{
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: -30px;
+}
+
+.dialogContent
+{
+    padding: 30px;
+}
+
+.dialogInput
+{
+    padding-left: 12px;
+}
+
+.dialogDoneBtn
+{
+    margin-right:20px;
+}
+
+.dialog
+{
+    width: 100%;
+}
+
+.inputContainer
+{
+    margin-bottom: 0;
+}
