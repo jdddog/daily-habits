@@ -14,25 +14,21 @@ dailyHabits.controller('mainCtrl', function ($scope, $mdUtil, $mdDialog, $q, loc
     $scope.selectedHabit = null;
 
     $scope.initialiseCalendar = function () {
-        return $q(function (resolve, reject) {
-            var calendarId = localStorageService.get("calendarId");
+        var calendarId = localStorageService.get("calendarId");
 
-            if (calendarId == null) {
-                $scope.client.addCalendar("Daily Habits").then(function (data) {
-                    $scope.calendarId = data.id;
-                    localStorageService.set("calendarId", data.id);
-                    resolve();
-                }).catch(function (error) {
-                        console.log(JSON.stringify(error));
-                        reject(error);
-                    }
-                );
-            }
-            else {
-                $scope.calendarId = Number(calendarId);
-                resolve();
-            }
-        });
+        if (calendarId == null) {
+            $scope.client.addCalendar("Daily Habits").then(function (data) {
+                $scope.calendarId = data.id;
+                localStorageService.set("calendarId", data.id);
+                $scope.today();
+            }).catch(function (error) {
+                console.log(JSON.stringify(error));
+            });
+        }
+        else {
+            $scope.calendarId = Number(calendarId);
+            $scope.today();
+        }
     };
 
     /*
@@ -151,8 +147,6 @@ dailyHabits.controller('mainCtrl', function ($scope, $mdUtil, $mdDialog, $q, loc
      * Gets or creates calendar and loads events for today.
      */
 
-    $scope.initialiseCalendar().then(function () {
-        $scope.today();
-    });
+    $scope.initialiseCalendar();
 });
 
