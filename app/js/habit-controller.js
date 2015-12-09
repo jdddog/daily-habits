@@ -1,6 +1,5 @@
 
 angular.module('dailyHabits').controller('habitCtrl', function ($scope, localStorageService, $q) {
-    $scope.selectedHabit = null;
 
     $scope.validateDate = function (date) {
         return date > moment();
