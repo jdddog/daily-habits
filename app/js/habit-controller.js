@@ -1,5 +1,6 @@
 
 angular.module('dailyHabits').controller('habitCtrl', function ($scope, localStorageService, $q) {
+    $scope.selectedHabit = null;
 
     $scope.validateDate = function (date) {
         return date > moment();
@@ -14,50 +15,11 @@ angular.module('dailyHabits').controller('habitCtrl', function ($scope, localSto
     };
 
     $scope.saveHabit = function () {
-        if ($scope.selectedHabit.hasOwnProperty('habitId')) {
-            localStorageService.set($scope.selectedHabit.habitId, $scope.selectedHabit);
-            $scope.closeDialog();
-            $scope.deleteEvents($scope.selectedHabit).then(function (data) {
-                $scope.createEvents($scope.selectedHabit).then(function (data) {
-                    $scope.today();
-                });
-            });
-        }
-        else {
-            $scope.selectedHabit.habitId = uuid.v4();
-            localStorageService.set($scope.selectedHabit.habitId, $scope.selectedHabit); //TODO: change to calendar api when can store custom fields in calendar
-            $scope.closeDialog();
-            $scope.createEvents($scope.selectedHabit).then(function (data) {
-                $scope.today();
-            });
-        }
-    };
-
-    $scope.deleteEvents = function (habit) {
-        return $q(function (resolve, reject) {
-            var currentDate = moment().startOf('day');
-
-            $scope.client.findEvents($scope.calendarId, currentDate.toDate(), currentDate.toDate()).then(function (data) {
-                var eventIds = [];
-                for (var i = 0; i < data.length; i++) {
-                    var event = data[i];
-                    if (habit.habitId == event.habitId && event.start >= currentDate) {
-                        eventIds.push(event.id);
-                    }
-                }
-
-                $scope.client.deleteEvents($scope.calendarId, eventIds).then(function (data) {
-                    resolve(data);
-                }).catch(function (error) {
-                    resolve(error);
-                });
-
-            }).catch(function (error)
-                {
-                    console.log(JSON.stringify(error));
-                    reject(error);
-                }
-            );
+        $scope.selectedHabit.habitId = uuid.v4();
+        localStorageService.set($scope.selectedHabit.habitId, $scope.selectedHabit); //TODO: change to calendar api when can store custom fields in calendar
+        $scope.closeDialog();
+        $scope.createEvents($scope.selectedHabit).then(function (data) {
+            $scope.today();
         });
     };
 
@@ -71,7 +33,6 @@ angular.module('dailyHabits').controller('habitCtrl', function ($scope, localSto
 
                 events.push({
                     title: habit.name,
-                    type: habit.type,
                     start: currentDate.clone().toDate(),
                     end: currentDate.clone().toDate(),
                     habitId: habit.habitId
