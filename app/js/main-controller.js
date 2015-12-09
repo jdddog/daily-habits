@@ -94,6 +94,16 @@ dailyHabits.controller('mainCtrl', function ($scope, localStorageService, $mdDia
         });
     };
 
+    $scope.openStatsDialog = function (event) {
+        $mdDialog.show({
+            scope: $scope.$new(),
+            templateUrl: 'stats.tmpl.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            controller: 'statsCtrl'
+        });
+    };
+
     $scope.closeDialog = function()
     {
         $mdDialog.hide('');

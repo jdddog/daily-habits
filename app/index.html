@@ -14,8 +14,12 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/uoacalendar-js/dist/uoacalendar.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
     <script src="js/main-controller.js"></script>
     <script src="js/habit-controller.js"></script>
+    <script src="js/stats-controller.js"></script>
 </head>
 <body ng-controller="mainCtrl">
     <md-toolbar class="md-tall" layout="column">
@@ -39,6 +43,10 @@
 
             <md-button class="md-icon-button" aria-label="Goto today" ng-click="today()" ng-disabled="isDayEditable()">
                 <md-icon md-svg-icon="img/icons/ic_edit_48px.svg"></md-icon>
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="Statistics" ng-click="openStatsDialog($event)">
+                <md-icon md-svg-icon="img/icons/ic_insert_chart_black_48px.svg"></md-icon>
             </md-button>
         </div>
 

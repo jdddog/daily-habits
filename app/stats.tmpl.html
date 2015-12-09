@@ -1,0 +1,28 @@
+<md-dialog aria-label="Statistics" ng-cloak class="dialog">
+    <md-dialog-content class="dialogContent">
+        <div layout="row" layout-align="start center">
+            <md-input-container flex="20">
+                <label>Habit</label>
+                <md-select ng-model="stats.habitId" ng-change="updateGraph()">
+                    <md-option ng-repeat="habit in habits" value="{{habit.habitId}}">
+                        {{habit.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-radio-group flex="30" ng-model="stats.period" layout="row" ng-change="updateGraph()">
+                <md-radio-button value=0 class="md-primary">Week</md-radio-button>
+                <md-radio-button value=1>Month</md-radio-button>
+                <md-radio-button value=2>Year</md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <nvd3 options="graphOptions" data="graphData"><svg></svg></nvd3>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="closeDialog()" class="dialogDoneBtn">
+            Done
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
