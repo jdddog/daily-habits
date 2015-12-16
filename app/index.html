@@ -58,7 +58,7 @@
             <md-list-item ng-repeat="event in events">
                 <md-checkbox ng-model="event.todo" ng-change="onEventChanged(event)" ng-disabled="!isDayEditable()"></md-checkbox>
                 <p> {{ event.title }} </p>
-               <md-icon class="md-secondary" ng-click="" aria-label="Chat" md-svg-icon="img/icons/ic_edit_48px.svg" ng-disabled="!isDayEditable()"></md-icon>
+               <md-icon class="md-secondary" ng-click="" aria-label="Chat" md-svg-icon="img/icons/ic_edit_48px.svg"></md-icon>
             </md-list-item>
         </md-list>
     </div>
