@@ -17,8 +17,8 @@ angular.module('dailyHabits').controller('statsCtrl', function ($scope, localSto
             duration: 100,
             labelThreshold: 0.01,
             deepWatchData: true,
-            tooltip: true,
             deepWatchDataDepth: 0,
+            tooltip: true,
             labelSunbeamLayout: true,
             legend: {
                 margin: {
@@ -33,19 +33,16 @@ angular.module('dailyHabits').controller('statsCtrl', function ($scope, localSto
 
     $scope.updateGraph = function () {
         var start = null;
-        var end = null;
+        var end = moment();
 
         if ($scope.stats.period == 0) {
             start = moment().subtract(7, 'days');
-            end = moment();
         }
         else if ($scope.stats.period == 1) {
             start = moment().subtract(1, 'month');
-            end = moment();
         }
         else if ($scope.stats.period == 2) {
             start = moment().subtract(1, 'year');
-            end = moment();
         }
 
         $scope.client.findEvents($scope.calendarId, start.toDate(), end.toDate()).then(function (data) {
