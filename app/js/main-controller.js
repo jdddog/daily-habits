@@ -2,9 +2,9 @@ var dailyHabits = angular.module('dailyHabits', ['ngMaterial', 'LocalStorageModu
 
 dailyHabits.controller('mainCtrl', function ($scope, localStorageService, $mdDialog) {
     $scope.client = new UoACalendarClient("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcmlnX2lhdCI6MTQyMjQ5ODk0OSwiZXhwIjoxNDIyNDk5MjQ5LCJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImRldmVsb3BlciIsImVtYWlsIjoidGVzdEBhdWNrbGFuZC5hYy5ueiJ9.7jLkEBovT2HvT2noL4xdIhddaY8wpZpEVYEDHnnNm1Y");
+    $scope.calendarId = null;
     $scope.events = [];
     $scope.selectedHabit = null;
-    $scope.calendarId = null;
     $scope.displayedDay = moment();
 
     $scope.initialiseCalendar = function () {
