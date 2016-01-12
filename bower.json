@@ -1,10 +1,10 @@
 {
   "name": "daily-habits",
-  "description": "A starter project uoacalendar-js",
+  "description": "A starter project for diary-api",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "uoacalendar-js": "https://github.com/jdddog/diaryapi-js.git",
+    "diary-api": "https://github.com/jdddog/diary-api.git",
     "angular-material": "~1.0.0-rc4",
     "angular-local-storage": "~0.2.3",
     "moment": "~2.10.6",
