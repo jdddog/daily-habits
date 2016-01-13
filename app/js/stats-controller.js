@@ -6,6 +6,7 @@ angular.module('dailyHabits').controller('statsCtrl', function ($scope, localSto
     $scope.graphOptions = {
         chart: {
             type: 'pieChart',
+            width: 500,
             height: 500,
             x: function (d) {
                 return d.key;
