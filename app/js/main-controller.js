@@ -1,4 +1,4 @@
-var dailyHabits = angular.module('dailyHabits', ['ngMaterial', 'LocalStorageModule']);
+var dailyHabits = angular.module('dailyHabits', ['ngMaterial', 'LocalStorageModule', 'nvd3']);
 
 dailyHabits.controller('mainCtrl', function ($scope, localStorageService, $mdDialog) {
     $scope.client = new DiaryClient("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0NTI1NzQ1MDgsImVtYWlsIjoiIiwidXNlcm5hbWUiOiJqZGlwMDA0QGF1Y2tsYW5kLmFjLm56IiwidXNlcl9pZCI6Mywib3JpZ19pYXQiOjE0NTI1NzQyMDh9.NYY5hvbhnzdSGez6MTKaD1Yb1VL3YS1IwXn-UkF2hGA");    $scope.calendarId = null;
